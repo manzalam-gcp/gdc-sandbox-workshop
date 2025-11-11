@@ -1,0 +1,8 @@
+
+labels:
+- includeSelectors: true
+  pairs:
+    app-name: translate-app
+
+resources:
+- logging.yaml
