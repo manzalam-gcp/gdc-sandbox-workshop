@@ -32,13 +32,16 @@ Confirm `.env` settings.
 ```bash
 cat .env
 ```
-
 Login
 
 ```bash
 cd ~/gdc-sandbox-workshop
 source .env
 login
+```
+Make sure `harbor-secret` from docker login is set as a secret. 
+```bash
+ku create secret docker-registry harbor-secret --from-file=.dockerconfigjson=$HOME/.docker/config.json
 ```
 
 2. Build and deploy service

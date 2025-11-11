@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-server-test
+  name: web-server
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: web-server-test
+      app: web-server
   template:
     metadata:
       labels:
-        app: web-server-test
+        app: web-server
     spec:
       containers:
-      - name: web-server-test-container
-        image: ${HARBOR_URL}/${HARBOR_PROJECT}/web-server-test:latest
+      - name: web-server-container
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/web-server:latest
         imagePullPolicy: Always 
         ports:
           - containerPort: 80
       imagePullSecrets:
-      - name: ${HARBOR_SECRET}
+      - name: harbor-secret
 
 
 
