@@ -59,5 +59,4 @@ metadata:
 data:
   kibana.yml: |
     server.host: "0.0.0.0"
-    elasticsearch.hosts: ["http://elasticsearch.${NAMESPACE}.svc.cluster.local:9200"]
-    # server.publicBaseUrl: "http://10.200.32.81"
+    elasticsearch.hosts: ["http://elasticsearch:9200"]

@@ -8,6 +8,6 @@ if [ -n "$1" ] && [ -n "$2" ]; then
     docker_build "$1" "$2"
     exit 0
 fi
-echo "Usage: $0 {app|translate|open|elastic} or ./workloads/path/ image-name"
+echo "Usage: $0 ./workloads/path/ image-name"
 exit 1
 

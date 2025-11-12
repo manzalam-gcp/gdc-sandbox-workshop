@@ -13,15 +13,11 @@ pull "busybox:latest" "busybox"
 # show harbor
 
 # change repo name "tack-1" in app.properties
-vi workloads/translate-api/base/cluster/app.properties
+vi workloads/elastic/base/cluster/app.properties
 
-mv workloads/translate-api/base/cluster/app-secrets.properties.example workloads/translate-api/base/cluster/app-secrets.properties
 
-# change translate api key
-vi workloads/translate-api/base/cluster/app-secrets.properties
+ku apply -k workloads/elastic/base/cluster
 
-ku apply -k workloads/translate-api/base/cluster
-ko apply -k workloads/translate-api/base/org
 ```
 
 Inspect

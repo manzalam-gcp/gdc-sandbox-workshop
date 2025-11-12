@@ -15,19 +15,41 @@ configMapGenerator:
   envs:
   - app.properties
 
-secretGenerator:
-- name: app-secret-1
-  envs:
-  - app-secrets.properties
+# secretGenerator:
+# - name: app-secret-1
+#   envs:
+#   - app-secrets.properties
 
 replacements:
 - source:
     kind: ConfigMap
     name: app-configmap-1
-    fieldPath: data.IMAGE
+    fieldPath: data.ELASTICSEARCH_IMAGE
   targets:
   - select:
       kind: StatefulSet
-      name: elastic-statefull-set
+      name: es-cluster
+    fieldPaths:
+    - spec.template.spec.containers.0.image
+- source:
+    kind: ConfigMap
+    name: app-configmap-1
+    fieldPath: data.BUSYBOX_IMAGE
+  targets:
+  - select:
+      kind: StatefulSet
+      name: es-cluster
+    fieldPaths:
+    - spec.template.spec.initContainers.0.image
+    - spec.template.spec.initContainers.1.image
+    - spec.template.spec.initContainers.2.image
+- source:
+    kind: ConfigMap
+    name: app-configmap-1
+    fieldPath: data.KIBANA_IMAGE
+  targets:
+  - select:
+      kind: Deployment
+      name: kibana
     fieldPaths:
     - spec.template.spec.containers.0.image
