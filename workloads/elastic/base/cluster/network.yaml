@@ -16,3 +16,20 @@ spec:
     - podSelector:
         matchLabels:
           app: elasticsearch
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-external-traffic-egress-kibana
+spec:
+  podSelector:
+    matchLabels:
+      app: kibana
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: elasticsearch
+---
