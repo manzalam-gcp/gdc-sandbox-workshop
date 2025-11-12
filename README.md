@@ -24,4 +24,4 @@ source .env
 ## Labs
 
 * [Lab 1 - Deploy HTML Server](./LAB-1.md)
-
+* [Lab 2 - Deploy API Server](./LAB-2.md)

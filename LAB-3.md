@@ -1,4 +1,4 @@
-## Lab 1 - Deploy API Translation Server
+## Lab 1 - Deploy Elasticsearch
 
 
 1. Follow Step 1 on [Lab 1](LAB-1.md).
@@ -6,7 +6,10 @@
 2. Build and deploy service
 
 ```bash
-build ./workloads/translate-api/app translate
+pull "elasticsearch:8.11.4" "elasticsearch"
+pull "kibana:8.11.4" "kibana"
+pull "busybox:latest" "busybox"
+
 # show harbor
 
 # change repo name "tack-1" in app.properties

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/kibana:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 2000m
+            memory: "2048Mi"
+          requests:
+            cpu: 500m
+            memory: "1024Mi"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/kibana/config/kibana.yml
+          subPath: kibana.yml
+        ports:
+        - containerPort: 5601
+      imagePullSecrets:
+      - name: ${HARBOR_SECRET}
+      volumes:
+      - name: config-volume
+        configMap:
+          name: kibana-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana-svc
+  labels:
+    app: kibana
+spec:
+  ports:
+  - port: 80
+    targetPort: 5601
+  selector:
+    app: kibana
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+data:
+  kibana.yml: |
+    server.host: "0.0.0.0"
+    elasticsearch.hosts: ["http://elasticsearch.${NAMESPACE}.svc.cluster.local:9200"]
+    # server.publicBaseUrl: "http://10.200.32.81"

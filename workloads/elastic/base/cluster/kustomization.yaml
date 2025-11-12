@@ -1,0 +1,33 @@
+
+labels:
+- includeSelectors: true
+  pairs:
+    app-name: elasticsearch
+
+resources:
+- elastic-statefull-set.yaml
+- headless-service.yaml
+- kibana.yaml
+- network.yaml
+
+configMapGenerator:
+- name: app-configmap-1
+  envs:
+  - app.properties
+
+secretGenerator:
+- name: app-secret-1
+  envs:
+  - app-secrets.properties
+
+replacements:
+- source:
+    kind: ConfigMap
+    name: app-configmap-1
+    fieldPath: data.IMAGE
+  targets:
+  - select:
+      kind: StatefulSet
+      name: elastic-statefull-set
+    fieldPaths:
+    - spec.template.spec.containers.0.image
