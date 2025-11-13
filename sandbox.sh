@@ -30,6 +30,14 @@ if [ "$1" == "env" ]; then
     exit 0
 fi
 
+if [ "$1" == "config" ]; then
+    response=$(gcloud compute scp projects_config.yaml $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/gdc-sandbox/projects_config.yaml \
+        --tunnel-through-iap \
+        --project $SANDBOX_PROJECT \
+        --zone $SANDBOX_ZONE)
+    exit 0
+fi
+
 if [ "$1" == "cp" ]; then
     response=$(gcloud compute scp $SANDBOX_INSTANCE:/home/$SANDBOX_USER/$2 $3 \
         --tunnel-through-iap \

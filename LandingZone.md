@@ -11,3 +11,10 @@ Scripts:
 1. Run `./001-create-projects.py` to create your workloads Project 
 
 2. Run `./002-apply-role-bindings.py` Create your users and apply role bindings to your project
+
+3. Run `./003-createharborproject.py` Create your project on the Harbor Instance
+
+Log into Harbor, generate a user secret
+
+4. Run `./004-addharborsecret.py` Create docker registry secret
+

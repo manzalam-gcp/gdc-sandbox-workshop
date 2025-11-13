@@ -21,6 +21,8 @@ source .env
 ./sandbox.sh env
 ```
 
+4. 
+
 ## Labs
 
 * [Lab 1 - Deploy HTML Server](./LAB-1.md)
