@@ -21,8 +21,26 @@ source .env
 ./sandbox.sh env
 ```
 
+<<<<<<< HEAD
 4. 
 
+=======
+<<<<<<< HEAD
+=======
+vi projects_config.yaml
+
+
+4. Copy the Landing Zone config file to sandbox.
+
+./sandbox.sh config
+
+
+## Landing Zone 
+
+* [Landing Zone](./LandingZone.md)
+
+>>>>>>> a739c34 (readme updated)
+>>>>>>> a96d245 (readme updated)
 ## Labs
 
 * [Lab 1 - Deploy HTML Server](./LAB-1.md)
