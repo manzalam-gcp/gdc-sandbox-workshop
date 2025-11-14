@@ -1,17 +1,17 @@
 projects:
-- name: tack-1
+- name: manz-1
   orgId: org-1
-  description: This is Project 1
+  description: This is Manz's Project
   users:
     - user: fop-platform-admin@example.com
       roleSetRef: roleSets/developer
-    - user: fop-tackaberry@google.com
+    - user: fop-manzalam@google.com
       roleSetRef: roleSets/developer
 - name: user-project
   users:
     - user: fop-platform-admin@example.com
       roleSetRef: roleSets/developer
-    - user: fop-tackaberry@google.com
+    - user: fop-manzalam@google.com
       roleSetRef: roleSets/harborUser
 roleSets:
   developer:

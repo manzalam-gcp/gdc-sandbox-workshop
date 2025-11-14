@@ -1,8 +1,9 @@
+cd ~
 
 mv ~/Downloads/gdcloud_cli.tar.gz .
 tar -xf gdcloud_cli.tar.gz
 
-echo 'export PATH=$PATH:~/GDC-SANDBOX-WORKSHOP/google-distributed-cloud-hosted-cli/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:~/google-distributed-cloud-hosted-cli/bin' >> ~/.bashrc
 source ~/.bashrc
 
 gdcloud config set core/organization_console_url https://console.org-1.zone1.google.gdch.test
